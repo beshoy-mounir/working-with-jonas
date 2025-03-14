@@ -1,24 +1,20 @@
-// we read and do config in top so its available in the rest of the files
-const dotenv = require('dotenv');
-// DotEnv Read Config
-dotenv.config({ path: './config.env' });
-
 // mongoose
 const app = require(`./app.js`);
 const mongoose = require(`mongoose`);
 
-const db = process.env.DATABASE.replace(
-  `<password>`,
-  process.env.DATABASE_PASSWORD,
-);
+const db =
+  "mongodb+srv://beshoymounir22:A9XjdMc59qy1VbZ9@cluster0.1tsmy.mongodb.net/natours-test?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose
-  .connect(db)
-  .then((doc) => {
-    // console.log(doc);
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true, // Fixes ensureIndex deprecation warning
+    writeConcern: { w: "majority" }, // Fixes w, wtimeout, j, and fsync warnings
   })
-  .catch((err) => console.log('error 💥' + err));
+  .then(() => console.log("✅ Database connected successfully"))
+  .catch((err) => console.error("❌ Database connection error:", err));
 
 // listening to the server
-const port = process.env.PORT;
+const port = 3000;
 app.listen(port, () => console.log(`App Running on Port ${port}`));

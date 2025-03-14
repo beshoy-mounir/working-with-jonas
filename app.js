@@ -1,21 +1,21 @@
-const express = require('express');
-const morgan = require('morgan');
+const express = require("express");
+const morgan = require("morgan");
 
 const app = express();
 
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 // Requiring the Routes
-
-const tourRoute = require('./routes/tourRoutes');
-const userRoute = require('./routes/userRoutes');
+const defaultRoute = equire("./routes/defaultRoute");
+const tourRoute = require("./routes/tourRoutes");
+const userRoute = require("./routes/userRoutes");
 
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 // MiddleWare
 
 // app.use to call or read middle ware
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 // middle ware to but request data sent in the body of request
 
 app.use(express.json());
@@ -33,7 +33,8 @@ app.use(express.json());
 // –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
 // Routes
-app.use('/api/v1/tours', tourRoute);
-app.use('/api/v1/users', userRoute);
+app.use("/", defaultRoute);
+app.use("/api/v1/tours", tourRoute);
+app.use("/api/v1/users", userRoute);
 
 module.exports = app;
