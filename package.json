@@ -1,0 +1,21 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "learning express",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Beshoy Mounir",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongodb": "^6.14.2",
+    "mongoose": "^5.13.23"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "prettier": "^3.5.3"
+  }
+}
